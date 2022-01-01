@@ -1,0 +1,10 @@
+from typing import List
+from sorting.bubble_sort import BubbleSort
+from abc import abstractmethod
+
+
+class IntegerBubbleSort(BubbleSort):
+
+        @abstractmethod
+        def sort(self, unsorted_values: List[int]) -> List[int]:
+            pass

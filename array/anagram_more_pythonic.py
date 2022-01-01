@@ -10,14 +10,14 @@ class Anagram:
         array1.sort()
         array2.sort()
 
+        # Note: Could have used the builtin sorted(word1), sorted(word2) function as well to sort
+
         print(f'array1: {array1} array2: {array2}')
 
         if len(array1) == len(array2):
-            idx = 0
-            while idx < len(array1):
+            for idx in range(len(array1)):
                 if array1[idx] != array2[idx]:
                     return False
-                idx += 1
             return True
         else:
             return False

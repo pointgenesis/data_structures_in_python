@@ -3,21 +3,20 @@ class ReverseArray():
     def __init__(self):
         pass
 
-    def reverse(self, sorted_array):
+    def reverse(self, ordered_array):
         idx = 0
         head_idx = idx
-        tail_idx = len(sorted_array) - 1
-        midpoint = len(sorted_array) // 2
+        tail_idx = len(ordered_array) - 1
+        midpoint = len(ordered_array) // 2
         print(f'head_idx: {head_idx} tail_idx: {tail_idx} midpoint: {midpoint}')
         while idx < midpoint:
-            head_value = sorted_array[head_idx]
-            tail_value = sorted_array[tail_idx]
+            head_value = ordered_array[head_idx]
+            tail_value = ordered_array[tail_idx]
             print(f'head_value: {head_value} tail_value: {tail_value} idx: {idx}')
 
-            sorted_array[tail_idx] = head_value
-            sorted_array[head_idx] = tail_value
-            print(f'sorted_array[tail_idx]: {sorted_array[tail_idx]}  sorted_array[head_idx]: {sorted_array[head_idx]}')
-
+            ordered_array[tail_idx] = head_value
+            ordered_array[head_idx] = tail_value
+            print(f'ordered_array[tail_idx]: {ordered_array[tail_idx]}  ordered_array[head_idx]: {ordered_array[head_idx]}')
 
             head_idx += 1
             tail_idx -= 1

@@ -1,19 +1,22 @@
-#Data Structures in Python
+# Data Structures in Python ![](images/python-logo.png)
 
 Python implementations of common data structures such as LinkedList, Binary Search Trees, Queue, Stack, etc.
 
-##LinkedList
+## LinkedList
 
-##Binary Search Tree
+## Binary Search Tree
 
 General coding exercises for fun.
 
-##Anagram
+## Anagram
 
-##Duplicates in Array
+## Duplicates in Array
 
-##Palindrome
+## Palindrome
 
-##Reverse Array
+## Reverse Array
 
-##Reverse Words in a Sentence
+## Reverse Words in a Sentence
+
+## References (Gotchas and Best Practices)
+1 [Mutable Default Arguments](https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments)
