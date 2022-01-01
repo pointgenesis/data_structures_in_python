@@ -1,4 +1,4 @@
-# Data Structures in Python ![](images/python-logo.png)
+# Data Structures in ![](images/python-logo.png)
 
 Python implementations of common data structures such as LinkedList, Binary Search Trees, Queue, Stack, etc.
 
