@@ -20,5 +20,4 @@ class SelectionSort(BaseSort):
 
 
 if __name__ == '__main__':
-    selection_sort = SelectionSort()
-    selection_sort.sort([5, 1, 9, 6, 2, 8, 3, 7, 4])
+    SelectionSort.sort([5, 1, 9, 6, 2, 8, 3, 7, 4])
