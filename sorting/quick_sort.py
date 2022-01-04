@@ -39,7 +39,7 @@ class QuickSort:
             self.sort(idx_left, partition_point - 1)
             self.sort(partition_point + 1, idx_right)
 
-    def get_sorted_array(self):
+    def get_sorted_array(self) -> List[int]:
         return self.unsorted_array
 
 
