@@ -1,35 +1,45 @@
 class MergeSort:
 
-    def __init__(self):
-        pass
+    def __init__(self, debug=False):
+        self.debug = debug
 
-    def merge(self, array_sorted_1, array_sorted_2, array_merged):
-        idx_sorted_1, idx_sorted_2, idx_merged = 0, 0, 0
+    def sort(self, numbers):
+        print(f'sort({numbers}) invoked') if self.debug else None
+        if len(numbers) == 1:
+            return
 
-        while idx_sorted_1 < len(array_sorted_1) and idx_sorted_2 < len(array_sorted_2):
-            if array_sorted_1[idx_sorted_1] < array_sorted_2[idx_sorted_2]:
-                array_merged.append(array_sorted_1[idx_sorted_1])
-                idx_sorted_1 += 1
+        idx_middle = len(numbers) // 2
+        left_half_numbers = numbers[:idx_middle]
+        right_half_numbers = numbers[idx_middle:]
+
+        self.sort(left_half_numbers)
+        self.sort(right_half_numbers)
+
+        i, j, k = 0, 0, 0
+
+        while i < len(left_half_numbers) and j < len(right_half_numbers):
+            if left_half_numbers[i] < right_half_numbers[j]:
+                numbers[k] = left_half_numbers[i]
+                i += 1
             else:
-                array_merged.append(array_sorted_2[idx_sorted_2])
-                idx_sorted_2 += 1
-            idx_merged += 1
+                numbers[k] = right_half_numbers[j]
+                j += 1
+            k += 1
 
-        while idx_sorted_1 < len(array_sorted_1):
-            array_merged.append(array_sorted_1[idx_sorted_1])
-            idx_sorted_1 += 1
-            idx_merged += 1
+        while i < len(left_half_numbers):
+            numbers[k] = left_half_numbers[i]
+            k += 1
+            i += 1
 
-        while idx_sorted_2 < len(array_sorted_2):
-            array_merged.append(array_sorted_2[idx_sorted_2])
-            idx_sorted_2 += 1
-            idx_merged += 1
+        while j < len(right_half_numbers):
+            numbers[k] = right_half_numbers[j]
+            k += 1
+            j += 1
 
 
 if __name__ == '__main__':
-    arr_sorted_1 = [1, 2, 19, 32, 55]
-    arr_sorted_2 = [3, 7, 21, 33, 42, 54]
-    arr_merged = []
+    initial_numbers = [99, 13, 9, 11, 1, -3, 8, 40, -2, 13, 9]
+    print(initial_numbers)
     merge_sort = MergeSort()
-    merge_sort.merge(arr_sorted_1, arr_sorted_2, arr_merged)
-    print(arr_merged)
+    merge_sort.sort(initial_numbers)
+    print(initial_numbers)

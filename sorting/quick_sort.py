@@ -32,6 +32,8 @@ class QuickSort:
         # print(f'idx_left: {idx_left} idx_right: {idx_right}')
 
         if idx_right - idx_left > 0:
+            # for simplicity the right most index is considered the pivot point
+            # note: the worst-case time complexity of O(N^2) happens if the pivot point contains the largest value
             pivot_point = self.unsorted_array[idx_right]
 
             partition_point = self.partition(idx_left, idx_right, pivot_point)
