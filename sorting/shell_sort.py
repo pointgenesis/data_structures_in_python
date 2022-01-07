@@ -24,7 +24,8 @@ class ShellSort:
 
 
 if __name__ == '__main__':
-    array_unsorted = [44, 8, 22, 1, 11, 89, 33, 23, 7, 90, 25]
+    array_unsorted = [44, 8, 22, 1, 11, 89, 33, 23, 7, 90, 7, 8, -23, 25]
+    print(f'before: {array_unsorted}')
     shell_sort = ShellSort()
     shell_sort.sort(array_unsorted)
-    print(array_unsorted)
+    print(f'after: {array_unsorted}')

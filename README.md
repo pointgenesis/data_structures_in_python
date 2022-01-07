@@ -2,6 +2,9 @@
 
 Python implementations of common data structures such as LinkedList, Binary Search Trees, Queue, Stack, etc.
 
+## Big-O Notation Cheat Sheet
+![](images/big-o_complexity_chart.jpg)
+
 ## LinkedList
 
 ## Binary Search Tree

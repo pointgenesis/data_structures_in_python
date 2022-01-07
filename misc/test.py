@@ -1,30 +1,46 @@
-def SieveOfEratosthenes(n):
-    # Create a boolean array
-    # "prime[0..n]" and initialize
-    #  all entries it as true.
-    # A value in prime[i] will
-    # finally be false if i is
-    # Not a prime, else true.
-    prime = [True for i in range(n + 1)]
-    p = 2
-    while (p * p <= n):
+class Test:
 
-        # If prime[p] is not
-        # changed, then it is a prime
-        if (prime[p] == True):
+    def __init__(self, blocks, requirements):
+        self.blocks = blocks
+        self.requirements = requirements
 
-            # Update all multiples of p
-            for i in range(p * p, n + 1, p):
-                prime[i] = False
-        p += 1
-
-    # Print all prime numbers
-    for p in range(2, n + 1):
-        if prime[p]:
-            print(p)
+    def find_best_fit(self):
+        hassle_scores = {}
+        for block_idx, block in enumerate(blocks):
+            for requirement_idx, requirement in enumerate(requirements):
+                if block[requirement]:
+                    print(f'requirement: {requirement} was found at index: {block_idx}')
+                    hassle_score = block_idx *
 
 
-# Driver code
 if __name__ == '__main__':
-    n = 30
-    SieveOfEratosthenes(n)
+    blocks = [
+        {
+            "store": False,
+            "gym": True,
+            "school": False
+        },
+        {
+            "store": False,
+            "gym": False,
+            "school": False
+        },
+        {
+            "store": True,
+            "gym": True,
+            "school": False
+        },
+        {
+            "store": False,
+            "gym": True,
+            "school": False
+        },
+        {
+            "store": False,
+            "gym": False,
+            "school": True
+        },
+    ]
+    requirements = ["gym", "store"]
+    test = Test(blocks, requirements)
+    test.find_best_fit()
