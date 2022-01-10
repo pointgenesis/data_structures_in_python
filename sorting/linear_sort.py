@@ -4,7 +4,7 @@ class LinearSort:
     working in all scenarios.
     """
 
-    def findNthLargestItem(self, values, nth_highest_index):
+    def find_nth_largest_item(self, values, nth_highest_index):
         left_index = 0
         right_index = len(values) - 1
         while left_index <= right_index:
@@ -29,13 +29,22 @@ class LinearSort:
         print(values)
         return starting_index
 
+    def min(self, values):
+        return self.find_nth_largest_item(values, len(values))
+
+    def max(self, values):
+        largest_valued_item = 1
+        return self.find_nth_largest_item(values, largest_valued_item)
+
 
 def main():
     # values = [3, 55, 2, -1, -44, 3, 2, 1, 4, 88, 4, 88] <= breaks on negative and/or duplicated values
     values = [3, 55, 2, 1, 4, 88]
-    n = 5
+    n = 2
     linear_sort = LinearSort()
-    print(f'{n}th largest value: {linear_sort.findNthLargestItem(values, 4)}')
+    print(f'{n}th largest value: {linear_sort.find_nth_largest_item(values, n)}')
+    print(f'min value: {linear_sort.min(values)}')
+    print(f'max value: {linear_sort.max(values)}')
 
 
 if __name__ == '__main__':

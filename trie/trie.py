@@ -13,7 +13,7 @@ class Trie:
         for word in words:
             current = self.trie
             for char in word:
-                if not char in current.children:
+                if char not in current.children:
                     current.children[char] = Node({}, False)
                 current = current.children[char]
             current.is_a_word = True
@@ -21,7 +21,7 @@ class Trie:
     def auto_complete(self, prefix):
         current = self.trie
         for char in prefix:
-            if not char in current.children:
+            if char not in current.children:
                 return []
             current = current.children[char]
         return self.find_words_by_node(current, prefix)
