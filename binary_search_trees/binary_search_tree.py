@@ -122,8 +122,6 @@ class BinarySearchTree:
             self.asc_order_from_node(node.left_node, asc_values)
 
         asc_values.append(node.value)
-        print(node.value)
-        print(asc_values)
 
         if node.right_node:
             self.asc_order_from_node(node.right_node, asc_values)
@@ -132,28 +130,27 @@ class BinarySearchTree:
 
 
     def traverse_desc(self):
-        asc_values = []
-        return self.desc_order_from_node(self.root, asc_values)
+        desc_values = []
+        return self.desc_order_from_node(self.root, desc_values)
 
-    def desc_order_from_node(self, node, asc_values):
+    def desc_order_from_node(self, node, desc_values):
         if node.right_node:
-            self.desc_order_from_node(node.right_node, asc_values)
-
-        asc_values.append(node.value)
-        print(node.value)
-        print(asc_values)
+            self.desc_order_from_node(node.right_node, desc_values)
+        print(f'node.value: {node.value}')
+        desc_values.append(node.value)
 
         if node.left_node:
-            self.desc_order_from_node(node.left_node, asc_values)
+            self.desc_order_from_node(node.left_node, desc_values)
 
-        return asc_values
+        return desc_values
 
 # end class
 
 
 if __name__ == '__main__':
     bst = BinarySearchTree()
-    values = [43, 25, 7, 12, 17, 99, 77, 44, 107, 91]
+    # values = [43, 25, 7, 12, 17, 99, 77, 44, 107, 91]
+    values = [23, 2, 12, 6, 55, 44, 31]
     try:
         for value in values:
             bst.insert(value)
@@ -164,6 +161,8 @@ if __name__ == '__main__':
         print(f'asc values: {bst.traverse_asc()}')
         print(f'desc values: {bst.traverse_desc()}')
 
-        bst.remove(91)
+        bst.remove(12)
+        print(f'desc values: {bst.traverse_desc()}')
+
     except ValueError as ve:
         print(f'ERROR: {ve}')
