@@ -1,0 +1,38 @@
+Graphs:
+G(V,E) where V is a vertice (node) and E is an edge
+Directed (directional) vs Undirected (bi-directional)
+G(V,E) represented via:
+- Adjacency List Representation (when sparse graphs)
+    [] Iterating over Edges is efficienct
+    [] Edge Weight Lookup is slow O(E) because we have to lookup
+    [] Space Complexity: O(E)
+    A: [(4, C), (2, B)]
+    B: [(3, D)]
+    C: []
+    D: []
+- Adjacency Matrix Representation (when dealing with dense graphs)
+    [] Edge Weight Lookup O(1)
+    [] Iterating over Edges O(E**2)
+    [] Space Complexity: O(V**2)
+    [] Create a V x V matrix initialized to 0
+
+    [] Directed Graph (creates a non-symmetric matrix)
+        A   B   C   D
+    A   0   2   4   0
+    B   0   0   0   3
+    C   0   0   0   0
+    D   0   0   0   0
+
+    [] Undirected Graph (has symmetric representation)
+        A   B   C   D
+    A   0   0   1   0
+    B   0   0   1   1
+    C   1   1   0   0
+    D   0   1   0   0
+
+Applications of Graph Theory:
+    - Shortest Path Between Points
+    - Google's Page Rank Algorithm (Breadth First)
+    - Dependency Management (Maven/Gradle) - Directed Acyclic Graphs
+    - Optimization (max flow/airline scheduling/wayz)
+
