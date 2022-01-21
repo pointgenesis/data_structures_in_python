@@ -71,30 +71,83 @@ class BinarySearchTree:
             return None
 
     def remove(self, data):
-        parent_node = self.find_node(data, self.root)
-        if not parent_node:
-            print(f'Did not find node with a attribute value: {data}')
-        else:
-            print(f'Found the node corresponding to value: {data}')
-            if parent_node.left_node and parent_node.right_node:
-                current_node = parent_node.left_node
-                previous_node = None
-                while current_node and current_node.right_node:
-                    previous_node = current_node
-                    current_node = current_node.right_node
-                # end while
+        if self.root:
+            self.remove_node(data, self.root)
 
-                if current_node:
-                    return current_node.value
+    def remove_node(self, data, node):
+
+        if node is None:
+            return
+
+        if data < node.data:
+            self.remove_node(data, node.left_node)
+        elif data > node.data:
+            self.remove_node(data, node.right_node)
+        else:
+
+            if node.left_node is None and node.right_node is None:
+                print("Removing a leaf node...%d" % node.data)
+
+                parent = node.parent
+
+                if parent is not None and parent.left_node == node:
+                    parent.left_node = None
+                if parent is not None and parent.right_node == node:
+                    parent.right_node = None
+
+                if parent is None:
+                    self.root = None
+
+                del node
+
+            elif node.left_node is None and node.right_node is not None:  # node !!!
+                print("Removing a node with single right child...")
+
+                parent = node.parent
+
+                if parent is not None:
+                    if parent.left_node == node:
+                        parent.left_node = node.left_node
+                    if parent.rightChild == node:
+                        parent.right_node = node.right_node
                 else:
-                    print(f'WARNING: Tree may not have been initialized')
-                    return None
-            elif parent_node.left_node or parent_node.right_node:
-                pass
+                    self.root = node.right_node
+
+                node.right_node.parent = parent
+                del node
+
+            elif node.right_node is None and node.left_node is not None:
+                print("Removing a node with single left child...")
+
+                parent = node.parent
+
+                if parent is not None:
+                    if parent.left_node == node:
+                        parent.left_node = node.left_node
+                    if parent.right_node == node:
+                        parent.right_node = node.left_node
+                else:
+                    self.root = node.left_node
+
+                node.left_node.parent = parent
+                del node
+
             else:
-                pass
-        # end if
-    # end def
+                print('Removing node with two children....')
+
+                predecessor = self.get_predecessor(node.left_node)
+
+                temp = predecessor.data
+                predecessor.data = node.data
+                node.data = temp
+
+                self.remove_node(data, predecessor)
+
+    def get_predecessor(self, node):
+        if node.right_node:
+            return self.get_predecessor(node.right_node)
+
+        return node
 
     def find_node(self, data, current_node):
         if current_node and current_node.value == data:
