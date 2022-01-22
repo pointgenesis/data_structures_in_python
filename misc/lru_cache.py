@@ -72,7 +72,6 @@ class LRUCache:
         self.linked_list_cache.insert(node)
         self.cache_references[key] = node
 
-
     def recall(self, key) -> object:
 
         node = self.cache_references[key]
@@ -116,7 +115,7 @@ def main():
     print(lru_cache.keys())
     print(lru_cache.recall('travis'))
     for key in lru_cache.keys():
-         print(f'{lru_cache.recall(key)}')
+        print(f'{lru_cache.recall(key)}')
 
     print(lru_cache.linked_list_cache.items)
 
@@ -126,7 +125,7 @@ def main():
     print(lru_cache.linked_list_cache.items)
 
     for key in lru_cache.keys():
-         print(f'{lru_cache.recall(key)}')
+        print(f'{lru_cache.recall(key)}')
 
 
 if __name__ == '__main__':
