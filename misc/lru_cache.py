@@ -65,6 +65,7 @@ class LRUCache:
 
     def memoize(self, key: str, value: object):
         if self.linked_list_cache.items == self.capacity:
+            del self.cache_references[self.linked_list_cache.tail.key]
             self.linked_list_cache.delete_tail()
 
         node = Node(key, value)
@@ -123,6 +124,9 @@ def main():
         lru_cache.memoize(str(value), value)
 
     print(lru_cache.linked_list_cache.items)
+
+    for key in lru_cache.keys():
+         print(f'{lru_cache.recall(key)}')
 
 
 if __name__ == '__main__':
