@@ -115,17 +115,17 @@ def main():
     print(lru_cache.keys())
     print(lru_cache.recall('travis'))
     for key in lru_cache.keys():
-        print(f'{lru_cache.recall(key)}')
+        print(f'key: {key} value:{lru_cache.recall(key)}')
 
-    print(lru_cache.linked_list_cache.items)
-
+    print(f'Item count (Before): {lru_cache.linked_list_cache.items}')
     for value in range(100):
         lru_cache.memoize(str(value), value)
+    print(f'Item count (After): {lru_cache.linked_list_cache.items}')
 
-    print(lru_cache.linked_list_cache.items)
-
+    print(f'Items...')
     for key in lru_cache.keys():
-        print(f'{lru_cache.recall(key)}')
+        print(f'key: {key} value:{lru_cache.recall(key)}')
+    print(f'Items: {lru_cache.linked_list_cache.items}')
 
 
 if __name__ == '__main__':
