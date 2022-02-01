@@ -1,16 +1,16 @@
 from typing import List
 
 
-def visit(value: str, index: int = 0, new_value: List[str] = None) -> List[str]:
+def visit(value: str, index: int = 0, char_array: List[str] = None) -> List[str]:
     """ This function is for demonstration purposes only. By default strings are referencable using indexes. """
-    if new_value is None:
-        new_value = []
+    if char_array is None:
+        char_array = []
 
     if index < len(value):
-        new_value.append(value[index])
-        return visit(value, index + 1, new_value)
+        char_array.append(value[index])
+        return visit(value, index + 1, char_array)
 
-    return new_value
+    return char_array
 
 
 print(visit("hello"))
