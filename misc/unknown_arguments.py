@@ -1,25 +1,13 @@
+class DataObject(object):
+    def __init__(self, *args) -> None:
+        for arg in args:
+            print(f'{arg}')
 
 
-def print_values(*args):
-    for value in args:
-        print(value)
+def main():
+    my_list = {"travis", 50, "archery"}
+    data_object = DataObject(*my_list)
 
 
-print_values("a", "b", "c", "d")
-
-
-def print_key_value(**kwargs):
-    for arg in kwargs:
-        print(f'{arg}:{arg[0]}')
-    print(f'{kwargs["first_name"]}')
-
-
-print_key_value(first_name='fred', last_name='flintstone', address='bedrock')
-
-my_dict = {
-    "first_name": "barney",
-    "last_name": "rubble",
-    "age": "prehistoric"
-}
-
-print_values(my_dict)
+if __name__ == '__main__':
+    main()
