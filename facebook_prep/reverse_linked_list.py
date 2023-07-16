@@ -40,39 +40,53 @@ class Node:
 
 def reverse(head):
     node = head
-    stack_odd = []
     stack_even = []
-    while node.next is not None:
+    odd_head = None
+    odd_tail = None
+    while node is not None:
         print(f'{node.data}')
         value = node.data % 2
         if value == 0:
             stack_even.append(node)
+            print(f'even: {node}')
         else:
-            stack_odd.append(node)
-            # reverse even
-            # CASE-1: This is the first odd element in the list, and there is nothing in the even stack
-            # CASE-2: This is a successive odd element, and there is nothing in the even stack
-            # CASE-3: This is the first odd element in the list, and there are elements nothing in the even stack
-            # CASE-4: This is the second odd element in the list, and there are elements in the even stack
+            if odd_head is None or (odd_head == odd_tail and len(stack_even) == 0):
+                odd_head = node
+                odd_tail = node
+                print(f'odd_head: {node}')
+                print(f'odd_tail: {node}')
+            else:
+                odd_tail = node
+                print(f'odd_head: {node}')
+                print(f'odd_tail: {node}')
+
             previous_node = None
-            for index in range(len(stack_even) - 1, -1, -1):
-                if previous_node is None:
-                    previous_node = stack_even[index]
-                    continue
+            for index, even_node in enumerate(stack_even):
+                if index == 0:
+                    even_node.next = odd_tail
+                    previous_node = even_node
+                elif index == len(stack_even) - 1 and (odd_tail != odd_head):
+                    odd_head.next = even_node
+                    even_node.next = previous_node
                 else:
-                    current_node = stack_even[index]
-
-                    tmp_node = current_node
-                    current_node = previous_node
-                    previous_node = tmp_node
-
-                    previous_node.next = current_node
-
-            # hook up ends
+                    even_node.next = previous_node
+                    previous_node = even_node
 
         node = node.next
-    # reverse event
-    # CASE-5: This
+        # if node is None and len(stack_even) > 0:
+        #     print('flush the buffer')
+        #     previous_node = None
+        #     for index, even_node in enumerate(stack_even):
+        #         if index == 0:
+        #             even_node.next = None
+        #             previous_node = even_node
+        #         elif index == len(stack_even) - 1:
+        #             odd_head.next = even_node
+        #             even_node.next = previous_node
+        #         else:
+        #             even_node.next = previous_node
+        #             previous_node = even_node
+
 
 
 # These are the tests we use to determine if the solution is correct.
